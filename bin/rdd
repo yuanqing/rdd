@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var server = require('../server.js');
+var nopt = require('nopt');
+var openBrowser = require('open');
+
+var knownOpts = {
+  open: [Boolean, String],
+  port: Number
+};
+var shortHands = {
+  o: '--open',
+  p: '--port'
+};
+var opts = nopt(knownOpts, shortHands);
+
+var browser = opts.open;
+var port = opts.port || 8888;
+var url = 'http://localhost:' + port + '/';
+var file = opts.argv.remain[0] || 'README.md';
+
+server(file, port);
+
+if (browser) {
+  if (typeof browser === 'string') {
+    openBrowser(url, browser);
+  } else {
+    openBrowser(url);
+  }
+}

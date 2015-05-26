@@ -1,0 +1,43 @@
+{
+  "name": "rdd",
+  "version": "0.0.0",
+  "description": "Preview your `README.md` locally, with live reloading. Great for Readme Driven Development.",
+  "author": "Lim Yuan Qing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yuanqing/rdd.git"
+  },
+  "dependencies": {
+    "ecstatic": "~0.8.0",
+    "gaze": "^0.5.1",
+    "github-markdown-css": "^2.0.8",
+    "nopt": "^3.0.2",
+    "open": "0.0.5",
+    "remarkable": "^1.6.0",
+    "shoe": "0.0.15",
+    "through2": "^0.6.5"
+  },
+  "devDependencies": {
+    "browserify": "^10.2.1",
+    "jshint": "^2.7.0",
+    "uglify-js": "^2.4.23"
+  },
+  "bin": {
+    "rdd": "bin/rdd"
+  },
+  "scripts": {
+    "start": "node bin/rdd",
+    "lint": "jshint --verbose bin/rdd client.js server.js",
+    "bundle": "browserify client.js | uglifyjs --output bundle.js",
+    "build": "npm run lint && npm run bundle"
+  },
+  "keywords": [
+    "live",
+    "markdown",
+    "md",
+    "preview",
+    "rdd",
+    "readme"
+  ]
+}
