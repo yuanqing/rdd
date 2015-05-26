@@ -6,9 +6,18 @@ var gaze = require('gaze');
 var http = require('http');
 var Remarkable = require('remarkable');
 var shoe = require('shoe');
+var hljs = require('highlight.js');
 
 var md = new Remarkable('full', {
-  html: true
+  html: true,
+  highlight: function(str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (err) {}
+    }
+    return '';
+  }
 });
 
 var render = function(file, stream) {
