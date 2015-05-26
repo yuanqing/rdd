@@ -6,5 +6,6 @@ File:
 
 Options:
   -o, --open BROWSER  Open the rendered Markdown file in the specified browser.
-  -p, --port PORT     Set the port to serve the rendered file. Default: 8888.
+                      Defaults to your default browser.
+  -p, --port PORT     Set the port to serve the rendered file. Default to 8888.
   -h, --help          Print this message.

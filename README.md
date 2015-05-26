@@ -14,7 +14,7 @@ $ rdd -o
 Serving on localhost:8888
 ```
 
-Here we&rsquo;re using the `-o` flag to open our rendered page in the browser. The page will be updated automatically when we change `README.md`.
+Here we&rsquo;re using the `-o` flag to open the rendered page in our default web browser. The page will be updated automatically when we change `README.md`.
 
 ## Usage
 
@@ -27,7 +27,8 @@ File:
 
 Options:
   -o, --open BROWSER  Open the rendered Markdown file in the specified browser.
-  -p, --port PORT     Set the port to serve the rendered file. Default: 8888.
+                      Uses your default browser if not specified.
+  -p, --port PORT     Set the port to serve the rendered file. Default to 8888.
   -h, --help          Print this message.
 ```
 
