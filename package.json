@@ -1,7 +1,7 @@
 {
   "name": "rdd",
   "version": "0.0.0",
-  "description": "Preview your `README.md` locally, with live reloading. Great for Readme Driven Development.",
+  "description": "Preview your `README.md` locally as it would appear on Github, with live reloading. Great for Readme Driven Development.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
