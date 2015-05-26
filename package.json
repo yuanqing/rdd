@@ -1,6 +1,6 @@
 {
   "name": "rdd",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Preview your `README.md` locally as it would appear on Github, with changes reflected on-the-fly. Great for Readme Driven Development.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
