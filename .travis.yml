@@ -11,3 +11,7 @@ node_js:
 
 script:
   - npm run build
+
+after_success:
+  - npm i coveralls
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
