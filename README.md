@@ -37,6 +37,11 @@ Install via [npm](https://npmjs.com/):
 $ npm i -g rdd
 ```
 
+## Known issues
+
+- Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what actually Github uses
+- Does not support [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
+
 ## Prior art
 
 - [Grip](https://github.com/joeyespo/grip) is a similar tool written in Python
