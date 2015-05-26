@@ -21,7 +21,10 @@
   },
   "devDependencies": {
     "browserify": "^10.2.1",
+    "istanbul": "^0.3.14",
     "jshint": "^2.7.0",
+    "nightmare": "^1.8.1",
+    "tape": "^4.0.0",
     "uglify-js": "^2.4.23"
   },
   "bin": {
@@ -31,7 +34,8 @@
     "start": "node bin/rdd",
     "lint": "jshint --verbose bin/rdd client.js server.js",
     "bundle": "browserify client.js | uglifyjs --output bundle.js",
-    "build": "npm run lint && npm run bundle"
+    "test": "npm run bundle && rm -rf coverage && istanbul cover -- tape test/*.js --verbose",
+    "build": "npm run lint && npm test"
   },
   "keywords": [
     "live",
