@@ -13,7 +13,7 @@ var error = function(msg) {
 };
 
 var knownOpts = {
-  open: [Boolean, String],
+  open: String,
   port: Number,
   usage: Boolean
 };
@@ -56,12 +56,10 @@ if (file) {
 server(file, port, function(err) {
   return error(err);
 });
-console.log('Serving on localhost:%d', port);
+console.log('Serving on localhost:' + port);
 
 if (browser) {
-  if (typeof browser === 'string') {
-    openBrowser(url, browser);
-  } else {
-    openBrowser(url);
-  }
+  openBrowser(url, browser);
+} else {
+  openBrowser(url);
 }
