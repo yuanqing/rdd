@@ -20,7 +20,7 @@ Here we&rsquo;re using the `-o` flag to open the rendered page in the web browse
 Usage: rdd [file] [options]
 
 File:
-  If not specified, tries to find a README file (eg. README.md) in the
+  If not specified, tries to find a Readme file (eg. README.md) in the
   current directory.
 
 Options:
