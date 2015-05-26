@@ -58,8 +58,10 @@ server(file, port, function(err) {
 });
 console.log('Serving on localhost:' + port);
 
-if (browser) {
-  openBrowser(url, browser);
-} else {
-  openBrowser(url);
+if (browser != null) {
+  if (browser) {
+    openBrowser(url, browser);
+  } else {
+    openBrowser(url);
+  }
 }
