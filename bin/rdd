@@ -7,38 +7,54 @@ var nopt = require('nopt');
 var openBrowser = require('open');
 var server = require('../server.js');
 
+var error = function(msg) {
+  console.error('rdd: ' + msg);
+  return process.exit(1);
+};
+
 var knownOpts = {
   open: [Boolean, String],
-  port: Number
+  port: Number,
+  usage: Boolean
 };
 var shortHands = {
   o: '--open',
-  p: '--port'
+  p: '--port',
+  h: '--help'
 };
 var opts = nopt(knownOpts, shortHands);
+
+if (opts.help) {
+  return fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
+}
 
 var browser = opts.open;
 var port = opts.port || 8888;
 var url = 'http://localhost:' + port + '/';
 var file = opts.argv.remain[0];
 
-if (!file) {
-  var file = 'README.md';
+if (file) {
   if (!fs.existsSync(file)) {
-    var regexp = /^readme.(md|mkdn?|mdown|markdown)$/i;
-    var files = fs.readdirSync('./');
-    var i = -1;
-    var len = files.length;
-    while (++i < len) {
-      if (regexp.test(files[i])) {
-        file = files[i];
-        break;
-      }
+    error(file + ': no such file');
+  }
+} else {
+  var regexp = /^readme.(md|mkdn?|mdown|markdown)$/i;
+  var files = fs.readdirSync('./');
+  var i = -1;
+  var len = files.length;
+  while (++i < len) {
+    if (regexp.test(files[i])) {
+      file = files[i];
+      break;
     }
+  }
+  if (!file) {
+    error('need a file');
   }
 }
 
 server(file, port);
+console.log('Serving on localhost:%d', port);
 
 if (browser) {
   if (typeof browser === 'string') {
