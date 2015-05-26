@@ -4,6 +4,8 @@
 
 ## Quick start
 
+Requires [Node.js](https://nodejs.org/).
+
 ```
 $ ls
 README.md
@@ -12,7 +14,7 @@ $ rdd -o
 Serving on localhost:8888
 ```
 
-Here we&rsquo;re using the `-o` flag to open the rendered page in the web browser. The rendered Markdown will be updated automatically whenever we change `README.md`.
+Here we&rsquo;re using the `-o` flag to open our rendered page in the browser. The page will be updated automatically when we change `README.md`.
 
 ## Usage
 
@@ -39,7 +41,7 @@ $ npm i -g rdd
 
 ## Known issues
 
-- Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what actually Github uses
+- Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what Github actually uses
 - Does not support [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
 
 ## Prior art
