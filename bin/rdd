@@ -35,7 +35,7 @@ var file = opts.argv.remain[0];
 
 if (file) {
   if (!fs.existsSync(file)) {
-    error(file + ': no such file');
+    error(file + ': No such file');
   }
 } else {
   var regexp = /^readme.(md|mkdn?|mdown|markdown)$/i;
@@ -49,11 +49,13 @@ if (file) {
     }
   }
   if (!file) {
-    error('need a file');
+    return error('Need a file');
   }
 }
 
-server(file, port);
+server(file, port, function(err) {
+  return error(err);
+});
 console.log('Serving on localhost:%d', port);
 
 if (browser) {

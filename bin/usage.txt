@@ -1,7 +1,7 @@
 Usage: rdd [file] [options]
 
 File:
-  If not specified, tries to find a README file (eg. README.md) in the
+  If not specified, tries to find a Readme file (eg. README.md) in the
   current directory.
 
 Options:
