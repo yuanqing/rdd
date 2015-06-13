@@ -13,7 +13,7 @@ var error = function(msg) {
 };
 
 var knownOpts = {
-  open: String,
+  open: Boolean,
   port: Number,
   usage: Boolean
 };
@@ -28,7 +28,6 @@ if (opts.help) {
   return fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
 }
 
-var browser = opts.open;
 var port = opts.port || 8888;
 var url = 'http://localhost:' + port + '/';
 var file = opts.argv.remain[0];
@@ -58,10 +57,6 @@ server(file, port, function(err) {
 });
 console.log('Serving on localhost:' + port);
 
-if (browser != null) {
-  if (browser) {
-    openBrowser(url, browser);
-  } else {
-    openBrowser(url);
-  }
+if (open) {
+  openBrowser(url);
 }
