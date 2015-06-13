@@ -28,6 +28,7 @@ if (opts.help) {
   return fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
 }
 
+var open = opts.open;
 var port = opts.port || 8888;
 var url = 'http://localhost:' + port + '/';
 var file = opts.argv.remain[0];
