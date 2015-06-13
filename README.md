@@ -26,11 +26,10 @@ File:
   current directory.
 
 Options:
-  -o, --open BROWSER  Open the rendered Markdown file in the specified browser.
-                      Uses your default browser if not specified.
-  -p, --port PORT     Set the port to serve the rendered file. Serves on port
-                      8888 if not specified.
-  -h, --help          Print this message.
+  -o, --open       Open the rendered Markdown file in your default web browser
+  -p, --port PORT  Set the port to serve the rendered file. Serves on port
+                   8888 if not specified.
+  -h, --help       Print this message.
 ```
 
 ## Installation
@@ -44,16 +43,11 @@ $ npm i -g rdd
 ## Known issues
 
 - Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what Github actually uses
-- Does not support [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
+- Does not support emojis or [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
 
 ## Prior art
 
 - [Grip](https://github.com/joeyespo/grip) is a similar tool written in Python
-
-## Changelog
-
-- 0.1.0
-  - Initial release
 
 ## License
 
