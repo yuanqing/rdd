@@ -2,11 +2,12 @@ var morphdom = require('morphdom')
 
 var element = document.querySelector('.markdown-body')
 
-var ws = new WebSocket(
-  'ws://localhost:' + (parseInt(window.location.port) + 1) + '/'
-)
+var path = window.location.pathname.substring(1)
+var port = parseInt(window.location.port) + 1
+
+var ws = new WebSocket('ws://localhost:' + port + '/')
 ws.onopen = function () {
-  ws.send(window.location.pathname.substring(1))
+  ws.send(path)
 }
 ws.onmessage = function (event) {
   morphdom(

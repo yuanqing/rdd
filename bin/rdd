@@ -5,6 +5,7 @@ const nopt = require('nopt')
 const opn = require('opn')
 const path = require('path')
 const server = require('../server')
+const markdownExtensions = require('markdown-extensions')
 
 const logError = function(message) {
   console.error('rdd: ' + message)
@@ -32,31 +33,32 @@ if (options.help) {
 const port = options.port || 8888
 const url = 'http://localhost:' + port + '/'
 
-let filePath = options.argv.remain[0]
-if (filePath) {
-  if (!fs.existsSync(filePath)) {
-    logError(filePath + ': No such file')
+let file = options.argv.remain[0]
+if (file) {
+  if (!fs.existsSync(file)) {
+    return logError(file + ': No such file')
   }
 } else {
-  const regExp = /^readme.(md|mkdn?|mdown|markdown)$/i
-  filePath = fs.readdirSync('./').reduce(function(foundFilePath, filePath) {
-    if (foundFilePath) {
-      return foundFilePath
+  const regExp = new RegExp(
+    '^readme.(' + markdownExtensions.join('|') + ')$',
+    'i'
+  )
+  file = fs.readdirSync(process.cwd()).reduce(function(foundFile, file) {
+    if (foundFile) {
+      return foundFile
     }
-    if (regExp.test(filePath)) {
-      return filePath
+    if (regExp.test(file)) {
+      return file
     }
   }, null)
-  if (!filePath) {
+  if (!file) {
     return logError('Need a file')
   }
 }
 
-server(filePath, port, function(error) {
-  return logError(error)
-})
+server(file, port, logError)
 console.log('Serving on localhost:' + port)
 
 if (options.open) {
-  opn(url + filePath)
+  opn(url + file)
 }
