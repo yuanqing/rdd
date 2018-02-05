@@ -1,6 +1,6 @@
 {
   "name": "rdd",
-  "version": "0.2.2",
+  "version": "1.0.0",
   "description": "Preview your `README.md` locally as it would appear on Github, with live updating. Useful for Readme Driven Development.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
@@ -9,34 +9,30 @@
     "url": "git://github.com/yuanqing/rdd.git"
   },
   "dependencies": {
-    "ecstatic": "~3.1.1",
-    "gaze": "^1.1.2",
-    "github-markdown-css": "^2.9.0",
-    "global": "^4.3.2",
+    "chokidar": "^2.0.0",
+    "ecstatic": "^3.2.0",
+    "express": "^4.16.2",
+    "github-markdown-css": "^2.10.0",
     "highlight.js": "^9.12.0",
+    "lodash.template": "^4.4.0",
+    "marked": "^0.3.12",
+    "morphdom": "^2.3.3",
     "nopt": "^4.0.1",
-    "open": "0.0.5",
-    "remarkable": "^1.6.0",
-    "shoe": "0.0.15",
-    "through2": "^2.0.3"
+    "opn": "^5.2.0",
+    "ws": "^4.0.0"
   },
   "devDependencies": {
-    "browserify": "^14.5.0",
-    "istanbul": "^0.4.5",
-    "jshint": "^2.7.0",
-    "nightmare": "^2.10.0",
-    "tape": "^4.0.0",
-    "uglify-js": "^3.2.2"
+    "browserify": "^15.2.0",
+    "prettier-standard": "^8.0.0",
+    "uglify-js": "^3.3.9"
   },
   "bin": {
     "rdd": "bin/rdd"
   },
   "scripts": {
-    "start": "node bin/rdd",
-    "lint": "jshint --verbose bin/rdd client.js server.js",
-    "bundle": "browserify client.js | uglifyjs --output bundle.js",
-    "test": "npm run bundle && rm -rf coverage && istanbul cover -- tape test/*.js --verbose",
-    "build": "npm run lint && npm test"
+    "build": "browserify client/index.js | uglifyjs --compress --mangle > client/bundle.js",
+    "lint": "prettier-standard bin/rdd client/index.js server/index.js --no-semi --single-quote --write",
+    "start": "bin/rdd --open"
   },
   "keywords": [
     "live",

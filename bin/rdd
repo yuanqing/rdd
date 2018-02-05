@@ -1,62 +1,62 @@
 #!/usr/bin/env node
 
-'use strict';
+const fs = require('fs')
+const nopt = require('nopt')
+const opn = require('opn')
+const path = require('path')
+const server = require('../server')
 
-var fs = require('fs');
-var nopt = require('nopt');
-var openBrowser = require('open');
-var server = require('../server.js');
+const logError = function(message) {
+  console.error('rdd: ' + message)
+  return process.exit(1)
+}
 
-var error = function(msg) {
-  console.error('rdd: ' + msg);
-  return process.exit(1);
-};
-
-var knownOpts = {
+const knownOptions = {
   open: Boolean,
   port: Number,
   usage: Boolean
-};
-var shortHands = {
+}
+const shortHands = {
   o: '--open',
   p: '--port',
   h: '--help'
-};
-var opts = nopt(knownOpts, shortHands);
+}
+const options = nopt(knownOptions, shortHands)
 
-if (opts.help) {
-  return fs.createReadStream(__dirname + '/usage.txt').pipe(process.stdout);
+if (options.help) {
+  return fs
+    .createReadStream(path.join(__dirname, 'usage.txt'))
+    .pipe(process.stdout)
 }
 
-var port = opts.port || 8888;
-var url = 'http://localhost:' + port + '/';
-var file = opts.argv.remain[0];
+const port = options.port || 8888
+const url = 'http://localhost:' + port + '/'
 
-if (file) {
-  if (!fs.existsSync(file)) {
-    error(file + ': No such file');
+let filePath = options.argv.remain[0]
+if (filePath) {
+  if (!fs.existsSync(filePath)) {
+    logError(filePath + ': No such file')
   }
 } else {
-  var regexp = /^readme.(md|mkdn?|mdown|markdown)$/i;
-  var files = fs.readdirSync('./');
-  var i = -1;
-  var len = files.length;
-  while (++i < len) {
-    if (regexp.test(files[i])) {
-      file = files[i];
-      break;
+  const regExp = /^readme.(md|mkdn?|mdown|markdown)$/i
+  filePath = fs.readdirSync('./').reduce(function(foundFilePath, filePath) {
+    if (foundFilePath) {
+      return foundFilePath
     }
-  }
-  if (!file) {
-    return error('Need a file');
+    if (regExp.test(filePath)) {
+      return filePath
+    }
+  }, null)
+  if (!filePath) {
+    return logError('Need a file')
   }
 }
 
-server(file, port, function(err) {
-  return error(err);
-});
-console.log('Serving on localhost:' + port);
+server(filePath, port, function(error) {
+  return logError(error)
+})
+console.log('Serving on localhost:' + port)
 
-if (opts.open) {
-  openBrowser(url);
+if (options.open) {
+  opn(url + filePath)
 }
