@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
+const markdownExtensions = require('markdown-extensions')
 const nopt = require('nopt')
 const opn = require('opn')
 const path = require('path')
+
 const server = require('../server')
-const markdownExtensions = require('markdown-extensions')
 
 const logError = function(message) {
   console.error('rdd: ' + message)
