@@ -10,11 +10,11 @@ Requires [Node.js](https://nodejs.org/).
 $ ls
 README.md
 $ npm install --global rdd
-$ rdd -o
+$ rdd --open
 Serving on localhost:8888
 ```
 
-Here we&rsquo;re using the `-o` flag to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`.
+Here we&rsquo;re using the `--open` flag (`-o` works, too) to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`.
 
 ## Usage
 
