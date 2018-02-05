@@ -113,8 +113,8 @@ const server = function (file, port, callback) {
     })
   })
 
-  // Serve the the entire `rdd` module directory as static files.
-  app.use('/__rdd__', express.static(path.resolve(__dirname, '..')))
+  // Serve the build directory as static files.
+  app.use('/__rdd__', express.static(path.resolve(__dirname, '..', 'build')))
 
   // Serve the entire `directory` as static files.
   app.use(

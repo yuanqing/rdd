@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "browserify": "^15.2.0",
+    "csso-cli": "^1.1.0",
     "prettier-standard": "^8.0.0",
     "uglify-js": "^3.3.9"
   },
@@ -31,8 +32,11 @@
     "rdd": "bin/rdd"
   },
   "scripts": {
-    "build": "browserify client/index.js | uglifyjs --compress --mangle > client/bundle.js",
-    "lint": "prettier-standard bin/rdd client/index.js server/index.js --no-semi --single-quote --write",
+    "build": "yarn clean && yarn build-css && yarn build-js",
+    "build-css": "mkdir -p build && cat src/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/bundle.css",
+    "build-js": "mkdir -p build && browserify src/client.js | uglifyjs --compress --mangle > build/bundle.js",
+    "clean": "rm -rf build",
+    "lint": "prettier-standard bin/rdd src/*.js --no-semi --single-quote --write",
     "start": "bin/rdd --open"
   },
   "keywords": [
