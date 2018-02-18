@@ -18,12 +18,12 @@ const knownOptions = {
   port: Number,
   usage: Boolean
 }
-const shortHands = {
+const shorthands = {
   o: '--open',
   p: '--port',
   h: '--help'
 }
-const options = nopt(knownOptions, shortHands)
+const options = nopt(knownOptions, shorthands)
 
 if (options.help) {
   return fs
@@ -32,7 +32,7 @@ if (options.help) {
 }
 
 const port = options.port || 8888
-const url = 'http://localhost:' + port + '/'
+const url = 'http://0.0.0.0:' + port + '/'
 
 let file = options.argv.remain[0]
 if (file) {
@@ -58,7 +58,7 @@ if (file) {
 }
 
 server(file, port, logError)
-console.log('Serving on localhost:' + port)
+console.log('Serving on 0.0.0.0:' + port)
 
 if (options.open) {
   opn(url + file)
