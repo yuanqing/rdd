@@ -1,17 +1,17 @@
-# rdd.js [![npm Version](https://img.shields.io/npm/v/rdd.svg?style=flat)](https://www.npmjs.org/package/rdd)
+# rdd [![npm Version](https://img.shields.io/npm/v/rdd.svg?style=flat)](https://www.npmjs.org/package/rdd)
 
-> Preview your `README.md` locally as it would appear on Github, with live updating. Useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
+> Preview your `README.md` locally as it would appear on GitHub, with live updating. Useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
 
 ## Quick start
 
 Requires [Node.js](https://nodejs.org/).
 
-```bash
+```sh
 $ ls
 README.md
 $ npm install --global rdd
 $ rdd --open
-Serving on localhost:8888
+Serving on 0.0.0.0:8888
 ```
 
 Here we&rsquo;re using the `--open` flag (`-o` works, too) to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`.
@@ -36,20 +36,20 @@ Options:
 
 Install via [npm](https://npmjs.com):
 
-```bash
+```sh
 $ npm install --global rdd
 ```
 
 Or [yarn](https://yarnpkg.com):
 
-```bash
+```sh
 $ yarn global add rdd
 ```
 
 ## Known issues
 
 - Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what Github actually uses
-- Does not support [emojis](https://emoji.muan.co/) or [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
+- Does not support [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
 
 ## Prior art
 
