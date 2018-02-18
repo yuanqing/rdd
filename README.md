@@ -1,4 +1,4 @@
-# rdd [![npm Version](https://img.shields.io/npm/v/rdd.svg?style=flat)](https://www.npmjs.org/package/rdd)
+# rdd [![npm Version](https://img.shields.io/npm/v/rdd.svg?style=flat)](https://www.npmjs.org/package/rdd) [![Build Status](https://img.shields.io/travis/yuanqing/rdd.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/rdd)
 
 > Preview your `README.md` locally as it would appear on GitHub, with live updating. Useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
 
