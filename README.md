@@ -48,8 +48,8 @@ $ yarn global add rdd
 
 ## Known issues
 
-- Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what Github actually uses
-- Does not support [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists)
+- Syntax highlighting for code blocks (using [Highlight.js](https://github.com/isagalaev/highlight.js)) is slightly different from what GitHub actually uses
+- Does not support [Task Lists](https://help.github.com/articles/about-task-lists/#creating-task-lists)
 
 ## Prior art
 
