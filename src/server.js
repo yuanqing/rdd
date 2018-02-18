@@ -9,6 +9,8 @@ const marked = require('marked')
 const path = require('path')
 const WebSocket = require('ws')
 
+const emojis = require('../build/emojis.json')
+
 // Configure `marked` to use `highlight.js`.
 marked.setOptions({
   highlight: function (code) {
@@ -16,13 +18,22 @@ marked.setOptions({
   }
 })
 
-// Read and compile the markdown `file`, and pass the result to the `callback`.
+const GITHUB_EMOJI_REGEX = /:(\w+):/g
+const mapEmojiKeywordToUnicode = function (match, keyword) {
+  const unicode = emojis[keyword]
+  return unicode || match
+}
+
 const compileMarkdownFile = function (file, callback) {
   fs.readFile(file, 'utf8', function (error, data) {
     if (error) {
       return callback(error)
     }
-    callback(null, marked(data))
+    const result = marked(data).replace(
+      GITHUB_EMOJI_REGEX,
+      mapEmojiKeywordToUnicode
+    )
+    callback(null, result)
   })
 }
 

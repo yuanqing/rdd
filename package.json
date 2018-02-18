@@ -1,16 +1,20 @@
 {
   "name": "rdd",
   "version": "0.3.1",
-  "description": "Preview your `README.md` locally as it would appear on Github, with live updating. Useful for Readme Driven Development.",
+  "description": "Preview your `README.md` locally as it would appear on GitHub, with live updating. Useful for Readme Driven Development.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/yuanqing/rdd.git"
   },
+  "bin": {
+    "rdd": "bin/rdd"
+  },
   "dependencies": {
     "chokidar": "^2.0.0",
     "ecstatic": "^3.2.0",
+    "emojilib": "^2.2.12",
     "express": "^4.16.2",
     "github-markdown-css": "^2.10.0",
     "highlight.js": "^9.12.0",
@@ -28,13 +32,10 @@
     "prettier-standard": "^8.0.0",
     "uglify-js": "^3.3.9"
   },
-  "bin": {
-    "rdd": "bin/rdd"
-  },
   "scripts": {
     "build": "yarn clean && yarn build-css && yarn build-js",
     "build-css": "mkdir -p build && cat src/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/bundle.css",
-    "build-js": "mkdir -p build && browserify src/client.js | uglifyjs --compress --mangle > build/bundle.js",
+    "build-js": "mkdir -p build && node src/build-emojis && browserify src/client.js | uglifyjs --compress --mangle > build/bundle.js",
     "clean": "rm -rf build",
     "lint": "prettier-standard bin/rdd src/*.js --no-semi --single-quote --write",
     "start": "bin/rdd --open"
