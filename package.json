@@ -9,10 +9,10 @@
     "url": "git://github.com/yuanqing/rdd.git"
   },
   "bin": {
-    "rdd": "bin/rdd"
+    "rdd": "bin/rdd.js"
   },
   "dependencies": {
-    "chokidar": "^2.0.0",
+    "chokidar": "^2.0.2",
     "ecstatic": "^3.2.0",
     "emojilib": "^2.2.12",
     "express": "^4.16.2",
@@ -20,25 +20,27 @@
     "highlight.js": "^9.12.0",
     "lodash.template": "^4.4.0",
     "markdown-extensions": "^1.1.0",
-    "marked": "^0.3.12",
+    "marked": "^0.3.17",
     "morphdom": "^2.3.3",
     "nopt": "^4.0.1",
     "opn": "^5.2.0",
-    "ws": "^4.0.0"
+    "ws": "^4.1.0"
   },
   "devDependencies": {
-    "browserify": "^15.2.0",
+    "browserify": "^16.1.0",
     "csso-cli": "^1.1.0",
     "prettier-standard": "^8.0.0",
-    "uglify-js": "^3.3.9"
+    "standard": "^11.0.0",
+    "uglify-js": "^3.3.12"
   },
   "scripts": {
     "build": "yarn clean && yarn build-css && yarn build-js",
     "build-css": "mkdir -p build && cat src/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/bundle.css",
-    "build-js": "mkdir -p build && node src/build-emojis && browserify src/client.js | uglifyjs --compress --mangle > build/bundle.js",
+    "build-js": "mkdir -p build && node src/build-emojis && browserify src/client.js | uglifyjs --compress --mangle --output build/bundle.js",
     "clean": "rm -rf build",
-    "lint": "prettier-standard bin/rdd src/*.js --no-semi --single-quote --write",
-    "start": "bin/rdd --open"
+    "fix": "prettier-standard 'bin/**/*.js' 'src/**/*.js'",
+    "lint": "standard 'bin/**/*.js' 'src/**/*.js'",
+    "start": "bin/rdd.js --open"
   },
   "keywords": [
     "live",
