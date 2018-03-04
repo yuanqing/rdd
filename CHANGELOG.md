@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.0
+
+- Omit the `id` attribute from headers
+
 ## 0.4.1
 
 - Add `standard`
