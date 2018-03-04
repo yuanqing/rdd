@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1
+
+- Add `standard`
+- Bump dependencies
+
 ## 0.4.0
 
 - Add support for [GitHub emojis](https://github.com/muan/emojilib)
