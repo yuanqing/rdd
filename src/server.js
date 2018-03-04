@@ -11,11 +11,16 @@ const WebSocket = require('ws')
 
 const emojis = require('../build/emojis.json')
 
-// Configure `marked` to use `highlight.js`.
+const renderer = new marked.Renderer()
+renderer.heading = function (text, level) {
+  return `<h${level}>${text}</h${level}>`
+}
 marked.setOptions({
+  gfm: true,
   highlight: function (code) {
     return highlight.highlightAuto(code).value
-  }
+  },
+  renderer: renderer
 })
 
 const GITHUB_EMOJI_REGEX = /:(\w+):/g
