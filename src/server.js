@@ -97,7 +97,7 @@ const server = function (file, port, callback) {
         return callback(error)
       }
       clients.forEach(function (client) {
-        if (client && client.file == changedFile) {
+        if (client && client.file === changedFile) {
           client.webSocket.send(html)
         }
       })
