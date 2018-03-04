@@ -8,9 +8,9 @@ const path = require('path')
 
 const server = require('../src/server')
 
-const logError = function(message) {
+const logError = function (message) {
   console.error('rdd: ' + message)
-  return process.exit(1)
+  process.exit(1)
 }
 
 const knownOptions = {
@@ -26,9 +26,8 @@ const shorthands = {
 const options = nopt(knownOptions, shorthands)
 
 if (options.help) {
-  return fs
-    .createReadStream(path.join(__dirname, 'usage.txt'))
-    .pipe(process.stdout)
+  fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout)
+  process.exit(0)
 }
 
 const port = options.port || 8888
@@ -37,14 +36,14 @@ const url = 'http://0.0.0.0:' + port + '/'
 let file = options.argv.remain[0]
 if (file) {
   if (!fs.existsSync(file)) {
-    return logError(file + ': No such file')
+    logError(file + ': No such file')
   }
 } else {
   const regExp = new RegExp(
     '^readme.(' + markdownExtensions.join('|') + ')$',
     'i'
   )
-  file = fs.readdirSync(process.cwd()).reduce(function(foundFile, file) {
+  file = fs.readdirSync(process.cwd()).reduce(function (foundFile, file) {
     if (foundFile) {
       return foundFile
     }
@@ -53,7 +52,7 @@ if (file) {
     }
   }, null)
   if (!file) {
-    return logError('Need a file')
+    logError('Need a file')
   }
 }
 
