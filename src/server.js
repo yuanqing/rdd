@@ -5,23 +5,23 @@ const fs = require('fs')
 const highlight = require('highlight.js')
 const lodashTemplate = require('lodash.template')
 const markdownExtensions = require('markdown-extensions')
-const marked = require('marked')
+const md = require('md')
 const path = require('path')
 const WebSocket = require('ws')
 
 const emojis = require('../build/emojis.json')
 
-const renderer = new marked.Renderer()
+const renderer = new md.Renderer()
 renderer.heading = function (text, level) {
   return `<h${level}>${text}</h${level}>`
 }
-marked.setOptions({
+const mdOptions = {
   gfm: true,
   highlight: function (code) {
     return highlight.highlightAuto(code).value
   },
   renderer: renderer
-})
+}
 
 const GITHUB_EMOJI_REGEX = /:(\w+):/g
 const mapEmojiKeywordToUnicode = function (match, keyword) {
@@ -34,7 +34,7 @@ const compileMarkdownFile = function (file, callback) {
     if (error) {
       return callback(error)
     }
-    const result = marked(data).replace(
+    const result = md(data, mdOptions).replace(
       GITHUB_EMOJI_REGEX,
       mapEmojiKeywordToUnicode
     )
