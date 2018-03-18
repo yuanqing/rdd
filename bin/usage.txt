@@ -1,3 +1,4 @@
+
 Usage: rdd [file] [options]
 
 File:
@@ -9,3 +10,4 @@ Options:
   -p, --port PORT  Set the port to serve the rendered file. Serves on port
                    8888 if not specified.
   -h, --help       Print this message.
+
