@@ -30,9 +30,6 @@ if (options.help) {
   process.exit(0)
 }
 
-const port = options.port || 8888
-const url = 'http://0.0.0.0:' + port + '/'
-
 let file = options.argv.remain[0]
 if (file) {
   if (!fs.existsSync(file)) {
@@ -56,9 +53,11 @@ if (file) {
   }
 }
 
-server(file, port, logError)
-console.log('Serving on 0.0.0.0:' + port)
-
-if (options.open) {
-  opn(url + file)
-}
+server(file, options.port || 8888)
+  .then(function (serverPort) {
+    console.log('Serving on 0.0.0.0:' + serverPort)
+    if (options.open) {
+      opn('http://0.0.0.0:' + serverPort + '/' + file)
+    }
+  })
+  .catch(logError)

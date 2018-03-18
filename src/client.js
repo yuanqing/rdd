@@ -3,9 +3,9 @@ var morphdom = require('morphdom')
 var element = document.querySelector('.markdown-body')
 
 var path = window.location.pathname.substring(1)
-var port = parseInt(window.location.port) + 1
+var webSocketPort = window.webSocketPort
 
-var webSocket = new window.WebSocket('ws://localhost:' + port + '/')
+var webSocket = new window.WebSocket('ws://localhost:' + webSocketPort + '/')
 webSocket.onopen = function () {
   webSocket.send(path)
 }

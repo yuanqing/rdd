@@ -2,12 +2,11 @@
 Usage: rdd [file] [options]
 
 File:
-  If not specified, tries to find a Readme file (eg. README.md) in the
+  If not specified, tries to find a Markdown file (eg. README.md) in the
   current directory.
 
 Options:
   -o, --open       Open the rendered Markdown file in your default web browser
-  -p, --port PORT  Set the port to serve the rendered file. Serves on port
-                   8888 if not specified.
+  -p, --port PORT  Set the preferred port to serve the rendered file.
   -h, --help       Print this message.
 
