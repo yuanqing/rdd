@@ -61,7 +61,6 @@ const markdownRoutes = new RegExp(
 
 function server (file, port) {
   return new Promise(async function (resolve, reject) {
-
     let webSocketPort
 
     // The directory to be watched for changes.
