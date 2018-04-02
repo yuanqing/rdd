@@ -36,11 +36,11 @@
   },
   "scripts": {
     "build": "yarn clean && yarn build-css && yarn build-js",
-    "build-css": "mkdir -p build && cat src/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/bundle.css",
-    "build-js": "mkdir -p build && node src/build-emojis && browserify src/client.js | uglifyjs --compress --mangle --output build/bundle.js",
+    "build-css": "mkdir -p build && cat src/css/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/bundle.css",
+    "build-js": "mkdir -p build && node src/js/build-emojis && browserify src/js/client.js | uglifyjs --compress --mangle --output build/bundle.js",
     "clean": "rm -rf *.log build",
-    "fix": "prettier-standard 'bin/**/*.js' 'src/**/*.js'",
-    "lint": "standard 'bin/**/*.js' 'src/**/*.js'",
+    "fix": "prettier-standard 'bin/**/*.js' 'src/js/**/*.js'",
+    "lint": "standard 'bin/**/*.js' 'src/js/**/*.js'",
     "start": "bin/rdd.js --open"
   },
   "files": [

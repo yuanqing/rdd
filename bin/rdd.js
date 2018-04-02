@@ -6,7 +6,7 @@ const nopt = require('nopt')
 const opn = require('opn')
 const path = require('path')
 
-const server = require('../src/server')
+const server = require('../src/js/server')
 
 const logError = function (message) {
   console.error('rdd: ' + message)
