@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0
+
+- Minor refactor
+- Resolve the port more intelligently
+
 ## 0.5.0
 
 - Omit the `id` attribute from headers
