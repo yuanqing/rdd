@@ -1,6 +1,6 @@
 {
   "name": "rdd",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Preview your Markdown locally as it would appear on GitHub, with live updating.",
   "author": "Lim Yuan Qing",
   "license": "MIT",
