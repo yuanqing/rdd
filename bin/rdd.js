@@ -6,27 +6,50 @@ const nopt = require('nopt')
 const opn = require('opn')
 const path = require('path')
 
+const version = require('../package.json').version
 const server = require('../src/js/server')
 
-const logError = function (message) {
+const help = `
+Usage: rdd [file] [options]
+
+File:
+  If not specified, tries to find a Markdown file (eg. README.md) in the
+  current directory.
+
+Options:
+  -h, --help         Print this message.
+  -o, --open         Open the rendered Markdown file in your default
+                     web browser.
+  -p, --port [port]  Set the preferred port to serve the rendered file.
+  -v, --version      Print the version number.
+`
+
+function logError (message) {
   console.error('rdd: ' + message)
   process.exit(1)
 }
 
 const knownOptions = {
+  help: Boolean,
   open: Boolean,
   port: Number,
-  usage: Boolean
+  version: Boolean
 }
 const shorthands = {
+  h: '--help',
   o: '--open',
   p: '--port',
-  h: '--help'
+  v: '--version'
 }
 const options = nopt(knownOptions, shorthands)
 
 if (options.help) {
-  fs.createReadStream(path.join(__dirname, 'usage.txt')).pipe(process.stdout)
+  console.log(help)
+  process.exit(0)
+}
+
+if (options.version) {
+  console.log(version)
   process.exit(0)
 }
 
