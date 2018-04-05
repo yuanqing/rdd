@@ -4,7 +4,6 @@ const fs = require('fs')
 const markdownExtensions = require('markdown-extensions')
 const nopt = require('nopt')
 const opn = require('opn')
-const path = require('path')
 
 const version = require('../../package.json').version
 const server = require('./server')
