@@ -9,7 +9,7 @@
     "url": "git://github.com/yuanqing/rdd.git"
   },
   "bin": {
-    "rdd": "bin/rdd.js"
+    "rdd": "src/js/cli.js"
   },
   "dependencies": {
     "chokidar": "^2.0.2",
@@ -41,10 +41,9 @@
     "clean": "rm -rf *.log build",
     "fix": "prettier-standard 'bin/**/*.js' 'src/js/**/*.js'",
     "lint": "standard 'bin/**/*.js' 'src/js/**/*.js'",
-    "start": "bin/rdd.js --open"
+    "start": "src/js/cli.js --open"
   },
   "files": [
-    "bin",
     "build",
     "src"
   ],

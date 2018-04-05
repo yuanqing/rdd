@@ -6,8 +6,8 @@ const nopt = require('nopt')
 const opn = require('opn')
 const path = require('path')
 
-const version = require('../package.json').version
-const server = require('../src/js/server')
+const version = require('../../package.json').version
+const server = require('./server')
 
 const help = `
 Usage: rdd [file] [options]
