@@ -19,8 +19,6 @@ Here we&rsquo;re using the `-o` flag (`--open` works, too) to open the rendered 
 ## Usage
 
 ```
-$ rdd -h
-
 Usage: rdd [file] [options]
 
 File:
@@ -28,9 +26,11 @@ File:
   current directory.
 
 Options:
-  -o, --open       Open the rendered Markdown file in your default web browser
-  -p, --port PORT  Set the preferred port to serve the rendered file.
-  -h, --help       Print this message.
+  -h, --help         Print this message.
+  -o, --open         Open the rendered Markdown file in your default
+                     web browser.
+  -p, --port [port]  Set the preferred port to serve the rendered file.
+  -v, --version      Print the version number.
 ```
 
 ## Installation
