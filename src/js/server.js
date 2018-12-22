@@ -11,7 +11,10 @@ const createFileWatcher = require('./create-file-watcher')
 const createWebSocketServer = require('./create-web-socket-server')
 
 const render = lodashTemplate(
-  fs.readFileSync(path.resolve(__dirname, '..', 'html', 'template.html'), 'utf8')
+  fs.readFileSync(
+    path.resolve(__dirname, '..', 'html', 'template.html'),
+    'utf8'
+  )
 )
 
 async function server (file, port) {
@@ -61,7 +64,10 @@ async function server (file, port) {
     })
 
     // Serve the build directory as static files.
-    app.use('/__rdd__', express.static(path.resolve(__dirname, '..', '..', 'build')))
+    app.use(
+      '/__rdd__',
+      express.static(path.resolve(__dirname, '..', '..', 'build'))
+    )
 
     // Serve the entire `directory` as static files.
     app.use(
