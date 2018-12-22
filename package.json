@@ -12,27 +12,27 @@
     "rdd": "src/js/cli.js"
   },
   "dependencies": {
-    "chokidar": "^2.0.2",
-    "ecstatic": "^3.2.0",
-    "emojilib": "^2.2.12",
-    "express": "^4.16.2",
-    "get-port": "^3.2.0",
+    "chokidar": "^2.0.4",
+    "ecstatic": "^3.3.0",
+    "emojilib": "^2.4.0",
+    "express": "^4.16.4",
+    "get-port": "^4.1.0",
     "github-markdown-css": "^2.10.0",
-    "highlight.js": "^9.12.0",
+    "highlight.js": "^9.13.1",
     "lodash.template": "^4.4.0",
-    "markdown-extensions": "^1.1.0",
+    "markdown-extensions": "^1.1.1",
     "md": "^0.6.0",
     "morphdom": "^2.3.3",
     "nopt": "^4.0.1",
-    "opn": "^5.2.0",
-    "ws": "^4.1.0"
+    "opn": "^5.4.0",
+    "ws": "^6.1.2"
   },
   "devDependencies": {
-    "browserify": "^16.1.0",
-    "csso-cli": "^1.1.0",
-    "prettier-standard": "^8.0.0",
-    "standard": "^11.0.0",
-    "uglify-js": "^3.3.12"
+    "browserify": "^16.2.3",
+    "csso-cli": "^2.0.0",
+    "prettier-standard": "^8.0.1",
+    "standard": "^12.0.1",
+    "uglify-js": "^3.4.9"
   },
   "scripts": {
     "build": "yarn clean && yarn build-css && yarn build-js",
