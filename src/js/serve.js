@@ -25,8 +25,8 @@ const markdownRoutesRegularExpression = new RegExp(
 const directory = process.cwd()
 
 async function serve (file, port) {
-  const serverPort = await getPort({port})
-  const webSocketPort = await getPort({port: port + 1})
+  const serverPort = await getPort({ port })
+  const webSocketPort = await getPort({ port: port + 1 })
 
   return new Promise(async function (resolve, reject) {
     const broadcastChangedMarkdownToClients = await createWebSocketServer(
