@@ -1,3 +1,6 @@
+const markyDeepLinks = require('marky-deep-links')
+markyDeepLinks()
+
 const webSocket = new window.WebSocket(
   `ws://0.0.0.0:${window.__rddWebSocketPort}/`
 )
