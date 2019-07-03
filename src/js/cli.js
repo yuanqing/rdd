@@ -6,6 +6,7 @@ const yargs = require('yargs')
 const name = require('../../package.json').name
 const resolveMarkdownFile = require('./resolve-markdown-file')
 const serve = require('./serve')
+const writeMarkdownTocToFile = require('./write-markdown-toc-to-file')
 
 yargs
   .scriptName(name)
@@ -16,6 +17,7 @@ yargs
       yargs.option('open', {
         alias: ['o'],
         type: 'boolean',
+        default: false,
         describe: 'Open the rendered Markdown file in your default web browser'
       })
       yargs.option('port', {
@@ -24,13 +26,23 @@ yargs
         default: 8888,
         describe: 'Set the preferred port to serve your Markdown file'
       })
+      yargs.option('toc', {
+        alias: ['t'],
+        type: 'boolean',
+        default: false,
+        describe: 'Insert a table of contents in the Markdown file'
+      })
     },
-    handler: async function ({ file, open, port }) {
+    handler: async function ({ file, open, port, toc }) {
       const markdownFile = await resolveMarkdownFile(file)
+      if (toc) {
+        return writeMarkdownTocToFile(markdownFile)
+      }
       const url = await serve(markdownFile, port)
       if (open) {
         openWebBrowser(url)
       }
+      return Promise.resolve()
     }
   })
   .strict()

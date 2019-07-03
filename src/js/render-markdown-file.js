@@ -3,7 +3,8 @@ const MarkdownIt = require('markdown-it')
 const markdownItEmoji = require('markdown-it-emoji')
 const markdownItGithubHeadings = require('markdown-it-github-headings')
 const markdownItHighlightJs = require('markdown-it-highlightjs')
-const markdownToc = require('markdown-toc')
+
+const insertMarkdownToc = require('./insert-markdown-toc')
 
 const m = new MarkdownIt({
   html: true,
@@ -13,15 +14,9 @@ const m = new MarkdownIt({
   .use(markdownItGithubHeadings)
   .use(markdownItHighlightJs)
 
-function insertToc (markdown) {
-  return markdownToc.insert(markdown, {
-    bullets: '-'
-  })
-}
-
 async function renderMarkdownFile (file) {
   const markdown = await fs.readFile(file, 'utf8')
-  return m.render(insertToc(markdown))
+  return m.render(insertMarkdownToc(markdown))
 }
 
 module.exports = renderMarkdownFile
