@@ -24,6 +24,7 @@
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-github-headings": "^1.1.1",
     "markdown-it-highlightjs": "^3.0.0",
+    "markdown-toc": "^1.2.0",
     "marky-deep-links": "^1.0.1",
     "open": "^6.4.0",
     "sirv": "^0.4.2",
