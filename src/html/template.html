@@ -3,13 +3,13 @@
   <meta charset="utf-8">
   <title><%= title %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/__rdd__/bundle.css">
+  <link rel="stylesheet" href="/__rdd/style.css">
 </head>
 <body>
   <article class="markdown-body">
     <%= content %>
   </article>
-  <script>window.webSocketPort = <%= webSocketPort %></script>
-  <script src="/__rdd__/bundle.js"></script>
+  <script>window.__rddWebSocketPort = <%= webSocketPort %></script>
+  <script src="/__rdd/script.js"></script>
 </body>
 </html>

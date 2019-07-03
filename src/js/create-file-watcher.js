@@ -1,13 +1,13 @@
 const chokidar = require('chokidar')
 const markdownExtensions = require('markdown-extensions')
 
-const markdownFiles = markdownExtensions.map(function (extension) {
+const markdownFilesGlob = markdownExtensions.map(function (extension) {
   return '**/*.' + extension
 })
 
 async function createFileWatcher (directory, onChangeCallback) {
   return new Promise(async function (resolve, reject) {
-    const watcher = chokidar.watch(markdownFiles, {
+    const watcher = chokidar.watch(markdownFilesGlob, {
       cwd: directory,
       ignored: '**/node_modules/**'
     })

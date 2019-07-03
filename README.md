@@ -1,6 +1,6 @@
-# rdd [![npm Version](https://img.shields.io/npm/v/rdd.svg?style=flat)](https://www.npmjs.org/package/rdd) [![Build Status](https://img.shields.io/travis/yuanqing/rdd.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/rdd)
+# rdd [![npm Version](https://badgen.net/npm/v/rdd)](https://www.npmjs.org/package/rdd) [![Build Status](https://badgen.net/travis/yuanqing/rdd?label=build)](https://travis-ci.org/yuanqing/rdd)
 
-> Preview your Markdown locally as it would appear on GitHub, with live updating.
+> Preview your Markdown locally as it would appear on GitHub, with live updating
 
 ## Quick start
 
@@ -11,37 +11,27 @@ $ ls
 README.md
 $ npm i -g rdd
 $ rdd -o
-Serving on 0.0.0.0:8888
+Serving on 0.0.0.0:8888/README.md
 ```
 
-Here we&rsquo;re using the `-o` flag (`--open` works, too) to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`. This is useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
+Here we’re using the `-o` flag (`--open` works, too) to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`. This is useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
 
 ## Usage
 
 ```
-Usage: rdd [file] [options]
+rdd [file]
 
-File:
-  If not specified, tries to find a Markdown file (eg. README.md) in the
-  current directory.
+Renders the given Markdown file
 
 Options:
-  -h, --help         Print this message.
-  -o, --open         Open the rendered Markdown file in your default
-                     web browser.
-  -p, --port [port]  Set the preferred port to serve the rendered file.
-  -v, --version      Print the version number.
+  --help      Show help                                                [boolean]
+  --version   Show version number                                      [boolean]
+  --open, -o  Open the rendered Markdown file in your default web browser
+                                                                       [boolean]
+  --port, -p  Set the preferred port to serve your Markdown file        [number]
 ```
 
 ## Installation
-
-Install via [npm](https://npmjs.com):
-
-```sh
-$ npm install --global rdd
-```
-
-Or [yarn](https://yarnpkg.com):
 
 ```sh
 $ yarn global add rdd

@@ -1,14 +1,14 @@
-const ecstatic = require('ecstatic')
 const express = require('express')
-const fs = require('fs')
+const fs = require('fs-extra')
 const getPort = require('get-port')
 const lodashTemplate = require('lodash.template')
 const markdownExtensions = require('markdown-extensions')
 const path = require('path')
+const sirv = require('sirv')
 
-const compileMarkdownFile = require('./compile-markdown-file')
 const createFileWatcher = require('./create-file-watcher')
 const createWebSocketServer = require('./create-web-socket-server')
+const renderMarkdownFile = require('./render-markdown-file')
 
 const render = lodashTemplate(
   fs.readFileSync(
@@ -17,27 +17,25 @@ const render = lodashTemplate(
   )
 )
 
-async function server (file, port) {
-  const serverPort = await getPort(port)
-  const webSocketPort = await getPort(port + 1)
+const markdownRoutesRegularExpression = new RegExp(
+  '.*.(' + markdownExtensions.join('|') + ')$',
+  'i'
+)
 
-  const directory = path.dirname(file)
+const directory = process.cwd()
 
-  const markdownRoutes = new RegExp(
-    '.*.(' + markdownExtensions.join('|') + ')$',
-    'i'
-  )
+async function serve (file, port) {
+  const serverPort = await getPort({port})
+  const webSocketPort = await getPort({port: port + 1})
 
   return new Promise(async function (resolve, reject) {
-    const broadcastChangedFileToClients = await createWebSocketServer(
+    const broadcastChangedMarkdownToClients = await createWebSocketServer(
       webSocketPort
     )
     await createFileWatcher(directory, async function (changedFile) {
       try {
-        const html = await compileMarkdownFile(
-          path.join(directory, changedFile)
-        )
-        broadcastChangedFileToClients(changedFile, html)
+        const html = await renderMarkdownFile(path.join(directory, changedFile))
+        broadcastChangedMarkdownToClients(changedFile, html)
       } catch (error) {
         reject(error)
       }
@@ -45,9 +43,9 @@ async function server (file, port) {
 
     const app = express()
 
-    app.get(markdownRoutes, async function (req, res, next) {
+    app.get(markdownRoutesRegularExpression, async function (req, res, next) {
       try {
-        const html = await compileMarkdownFile(
+        const html = await renderMarkdownFile(
           path.join(directory, req.originalUrl)
         )
         res.send(
@@ -63,24 +61,19 @@ async function server (file, port) {
       }
     })
 
-    // Serve the build directory as static files.
     app.use(
-      '/__rdd__',
+      '/__rdd',
       express.static(path.resolve(__dirname, '..', '..', 'build'))
     )
 
-    // Serve the entire `directory` as static files.
-    app.use(
-      ecstatic({
-        root: directory,
-        showdir: true
-      })
-    )
+    app.use(sirv(directory))
 
     app.listen(serverPort, function () {
-      resolve(serverPort)
+      const url = `0.0.0.0:${serverPort}/${file}`
+      console.log(`Serving on ${url}`)
+      resolve(`http://${url}`)
     })
   })
 }
 
-module.exports = server
+module.exports = serve
