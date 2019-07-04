@@ -12,25 +12,25 @@ yargs
   .scriptName(name)
   .command({
     command: '$0 [file]',
-    describe: 'Renders and serves the given Markdown file',
+    describe: 'Renders and serves the given Markdown document',
     builder: function (yargs) {
       yargs.option('open', {
         alias: ['o'],
         type: 'boolean',
         default: false,
-        describe: 'Open the rendered Markdown file in your default web browser'
+        describe: 'Open the rendered Markdown document in your default web browser'
       })
       yargs.option('port', {
         alias: ['p'],
         type: 'number',
         default: 8888,
-        describe: 'Set the preferred port to serve your Markdown file'
+        describe: 'Set the preferred port to serve the Markdown document'
       })
       yargs.option('toc', {
         alias: ['t'],
         type: 'boolean',
         default: false,
-        describe: 'Insert a table of contents into the Markdown file'
+        describe: 'Insert a table of contents into the Markdown document'
       })
     },
     handler: async function ({ file, open, port, toc }) {
