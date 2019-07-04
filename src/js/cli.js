@@ -12,7 +12,7 @@ yargs
   .scriptName(name)
   .command({
     command: '$0 [file]',
-    describe: 'Renders the given Markdown file',
+    describe: 'Renders and serves the given Markdown file',
     builder: function (yargs) {
       yargs.option('open', {
         alias: ['o'],
@@ -30,7 +30,7 @@ yargs
         alias: ['t'],
         type: 'boolean',
         default: false,
-        describe: 'Insert a table of contents in the Markdown file'
+        describe: 'Insert a table of contents into the Markdown file'
       })
     },
     handler: async function ({ file, open, port, toc }) {

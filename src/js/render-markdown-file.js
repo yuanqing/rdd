@@ -12,7 +12,7 @@ const m = new MarkdownIt({
 })
   .use(markdownItEmoji)
   .use(markdownItGithubHeadings)
-  .use(markdownItHighlightJs)
+  .use(markdownItHighlightJs, { auto: false })
 
 async function renderMarkdownFile (file) {
   const markdown = await fs.readFile(file, 'utf8')
