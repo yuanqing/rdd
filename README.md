@@ -21,20 +21,31 @@ Here we’re using the `-o` flag (`--open` works, too) to open the rendered page
 ```
 rdd [file]
 
-Renders the given Markdown file
+Renders and serves the given Markdown file
 
 Options:
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
   --open, -o  Open the rendered Markdown file in your default web browser
-                                                                       [boolean]
-  --port, -p  Set the preferred port to serve your Markdown file        [number]
+                                                      [boolean] [default: false]
+  --port, -p  Set the preferred port to serve your Markdown file
+                                                        [number] [default: 8888]
+  --toc, -t   Insert a table of contents into the Markdown file
+                                                      [boolean] [default: false]
+```
+
+Use the `<!-- toc -->` and `<!-- tocstop -->` HTML comments to [demarcate where a table of contents should be rendered in your Markdown document](https://github.com/jonschlinkert/markdown-toc#tocinsert). (This table of contents will be updated automatically as you edit your file.)
+
+To “commit” the table of contents in your Markdown document, do:
+
+```
+$ rdd -t
 ```
 
 ## Installation
 
 ```sh
-$ yarn global add rdd
+$ npm install --global rdd
 ```
 
 ## Known issues
