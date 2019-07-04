@@ -18,7 +18,8 @@ yargs
         alias: ['o'],
         type: 'boolean',
         default: false,
-        describe: 'Open the rendered Markdown document in your default web browser'
+        describe:
+          'Open the rendered Markdown document in your default web browser'
       })
       yargs.option('port', {
         alias: ['p'],
