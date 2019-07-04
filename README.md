@@ -2,6 +2,8 @@
 
 > Preview your Markdown locally as it would appear on GitHub, with live updating
 
+(`rdd` is short for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).)
+
 ## Quick start
 
 Requires [Node.js](https://nodejs.org/).
@@ -14,7 +16,7 @@ $ rdd -o
 Serving on 0.0.0.0:8888/README.md
 ```
 
-Here we’re using the `-o` flag (`--open` works, too) to open the rendered page in our default web browser. The page will be updated automatically whenever we change `README.md`. This is useful for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).
+Here we’re using the `-o` flag to open the rendered Markdown document in our default web browser. The page will be updated automatically whenever we change `README.md`.
 
 ## Usage
 
@@ -28,17 +30,17 @@ Options:
   --version   Show version number                                      [boolean]
   --open, -o  Open the rendered Markdown file in your default web browser
                                                       [boolean] [default: false]
-  --port, -p  Set the preferred port to serve your Markdown file
+  --port, -p  Set the preferred port to serve the Markdown file
                                                         [number] [default: 8888]
   --toc, -t   Insert a table of contents into the Markdown file
                                                       [boolean] [default: false]
 ```
 
-Use the `<!-- toc -->` and `<!-- tocstop -->` HTML comments to [demarcate where a table of contents should be rendered in your Markdown document](https://github.com/jonschlinkert/markdown-toc#tocinsert). (This table of contents will be updated automatically as you edit your file.)
+Use `<!-- toc -->` and `<!-- tocstop -->` to [demarcate where a table of contents should be rendered in the Markdown document](https://github.com/jonschlinkert/markdown-toc#tocinsert). (This table of contents will be updated automatically whenever we change the document.)
 
-To “commit” the table of contents in your Markdown document, do:
+To “commit” the table of contents to the document, do:
 
-```
+```sh
 $ rdd -t
 ```
 
