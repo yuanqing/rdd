@@ -48,7 +48,6 @@ async function serve (file, port) {
         const html = await renderMarkdownFile(
           path.join(directory, req.originalUrl)
         )
-        console.log('hello')
         res.send(
           render({
             content: html,
