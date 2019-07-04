@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0
+
+- Modernise syntax
+- Use `yargs` instead of `nopt`
+- Use `sirv` instead of `ecstatic`
+- Set `.innerHTML` instead of leveraging `morphdom`
+- Support automatically rendering a table of contents in the page
+- Add a `--toc` flag to allow “committing” the table of contents to the original Markdown document
+
 ## 1.0.0
 
 - First stable release
