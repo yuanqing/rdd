@@ -2,11 +2,9 @@
 
 > Preview your Markdown locally as it would appear on GitHub, with live updating
 
-(`rdd` is short for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).)
-
 ## Quick start
 
-Requires [Node.js](https://nodejs.org/).
+*Requires [Node.js](https://nodejs.org/).*
 
 ```sh
 $ ls
@@ -18,21 +16,23 @@ Serving on 0.0.0.0:8888/README.md
 
 Here we’re using the `-o` flag to open the rendered Markdown document in our default web browser. The page will be updated automatically whenever we change `README.md`.
 
+(`rdd` is short for [Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html).)
+
 ## Usage
 
 ```
 rdd [file]
 
-Renders and serves the given Markdown file
+Renders and serves the given Markdown document
 
 Options:
   --help      Show help                                                [boolean]
   --version   Show version number                                      [boolean]
-  --open, -o  Open the rendered Markdown file in your default web browser
+  --open, -o  Open the rendered Markdown document in your default web browser
                                                       [boolean] [default: false]
-  --port, -p  Set the preferred port to serve the Markdown file
+  --port, -p  Set the preferred port to serve the rendered document
                                                         [number] [default: 8888]
-  --toc, -t   Insert a table of contents into the Markdown file
+  --toc, -t   Insert a table of contents into the Markdown document
                                                       [boolean] [default: false]
 ```
 
