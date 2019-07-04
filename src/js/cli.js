@@ -24,7 +24,7 @@ yargs
         alias: ['p'],
         type: 'number',
         default: 8888,
-        describe: 'Set the preferred port to serve the Markdown document'
+        describe: 'Set the preferred port to serve the rendered document'
       })
       yargs.option('toc', {
         alias: ['t'],
