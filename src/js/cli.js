@@ -14,6 +14,12 @@ yargs
     command: '$0 [file]',
     describe: 'Renders and serves the given Markdown document',
     builder: function (yargs) {
+      yargs.option('format', {
+        alias: ['f'],
+        type: 'boolean',
+        default: false,
+        describe: 'Auto-format the Markdown document'
+      })
       yargs.option('open', {
         alias: ['o'],
         type: 'boolean',
@@ -34,12 +40,15 @@ yargs
         describe: 'Insert a table of contents into the Markdown document'
       })
     },
-    handler: async function ({ file, open, port, toc }) {
+    handler: async function ({ file, format, open, port, toc }) {
       const markdownFile = await resolveMarkdownFile(file)
       if (toc) {
         return writeMarkdownTocToFile(markdownFile)
       }
-      const url = await serve(markdownFile, port)
+      const url = await serve(markdownFile, {
+        port,
+        shouldFormat: format
+      })
       if (open) {
         openWebBrowser(url)
       }

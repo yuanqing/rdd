@@ -4,7 +4,7 @@
 
 ## Quick start
 
-*Requires [Node.js](https://nodejs.org/).*
+_Requires [Node.js](https://nodejs.org/)._
 
 ```sh
 $ ls
@@ -26,13 +26,14 @@ rdd [file]
 Renders and serves the given Markdown document
 
 Options:
-  --help      Show help                                                [boolean]
-  --version   Show version number                                      [boolean]
-  --open, -o  Open the rendered Markdown document in your default web browser
+  --help        Show help                                              [boolean]
+  --version     Show version number                                    [boolean]
+  --format, -f  Auto-format the Markdown document     [boolean] [default: false]
+  --open, -o    Open the rendered Markdown document in your default web browser
                                                       [boolean] [default: false]
-  --port, -p  Set the preferred port to serve the rendered document
+  --port, -p    Set the preferred port to serve the rendered document
                                                         [number] [default: 8888]
-  --toc, -t   Insert a table of contents into the Markdown document
+  --toc, -t     Insert a table of contents into the Markdown document
                                                       [boolean] [default: false]
 ```
 

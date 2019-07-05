@@ -8,6 +8,7 @@ const sirv = require('sirv')
 
 const createFileWatcher = require('./create-file-watcher')
 const createWebSocketServer = require('./create-web-socket-server')
+const formatMarkdownFile = require('./format-markdown-file')
 const renderMarkdownFile = require('./render-markdown-file')
 
 const render = lodashTemplate(
@@ -24,7 +25,7 @@ const markdownRoutesRegularExpression = new RegExp(
 
 const directory = process.cwd()
 
-async function serve (file, port) {
+async function serve (file, { port, shouldFormat }) {
   const serverPort = await getPort({ port })
   const webSocketPort = await getPort({ port: port + 1 })
 
@@ -33,8 +34,12 @@ async function serve (file, port) {
       webSocketPort
     )
     await createFileWatcher(directory, async function (changedFile) {
+      const filePath = path.join(directory, changedFile)
+      if (shouldFormat && (await formatMarkdownFile(filePath))) {
+        return
+      }
       try {
-        const html = await renderMarkdownFile(path.join(directory, changedFile))
+        const html = await renderMarkdownFile(filePath)
         broadcastChangedMarkdownToClients(changedFile, html)
       } catch (error) {
         reject(error)

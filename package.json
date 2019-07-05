@@ -27,6 +27,7 @@
     "markdown-toc": "^1.2.0",
     "marky-deep-links": "^1.0.1",
     "open": "^6.4.0",
+    "prettier": "^1.18.2",
     "sirv": "^0.4.2",
     "ws": "^7.0.1",
     "yargs": "^13.2.4"
