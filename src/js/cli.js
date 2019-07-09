@@ -20,6 +20,13 @@ yargs
         default: false,
         describe: 'Auto-format the Markdown document'
       })
+      yargs.option('dark', {
+        alias: ['d'],
+        type: 'boolean',
+        default: false,
+        describe:
+          'Enable dark mode'
+      })
       yargs.option('open', {
         alias: ['o'],
         type: 'boolean',
@@ -40,12 +47,13 @@ yargs
         describe: 'Insert a table of contents into the Markdown document'
       })
     },
-    handler: async function ({ file, format, open, port, toc }) {
+    handler: async function ({ dark, file, format, open, port, toc }) {
       const markdownFile = await resolveMarkdownFile(file)
       if (toc) {
         return writeMarkdownTocToFile(markdownFile)
       }
       const url = await serve(markdownFile, {
+        theme: dark ? 'dark' : 'light',
         port,
         shouldFormat: format
       })

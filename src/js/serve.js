@@ -25,7 +25,7 @@ const markdownRoutesRegularExpression = new RegExp(
 
 const directory = process.cwd()
 
-async function serve (file, { port, shouldFormat }) {
+async function serve (file, { port, shouldFormat, theme }) {
   const serverPort = await getPort({ port })
   const webSocketPort = await getPort({ port: port + 1 })
 
@@ -56,6 +56,7 @@ async function serve (file, { port, shouldFormat }) {
         res.send(
           render({
             content: html,
+            theme,
             title: path.basename(req.path),
             webSocketPort: webSocketPort
           })

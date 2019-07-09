@@ -1,3 +1,6 @@
+body {
+  background: #fff;
+}
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;
