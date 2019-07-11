@@ -17,6 +17,7 @@
     "fs-extra": "^8.1.0",
     "get-port": "^5.0.0",
     "github-markdown-css": "^3.0.1",
+    "globby": "^10.0.1",
     "highlight.js": "^9.15.8",
     "lodash.template": "^4.4.0",
     "markdown-extensions": "^1.1.1",
