@@ -2,7 +2,7 @@ const resolveMarkdownFiles = require('../resolve-markdown-files')
 const formatMarkdownFile = require('../format-markdown-file')
 
 module.exports = {
-  command: ['format [files..]'],
+  command: ['format [files..]', 'fmt [files..]'],
   describe: 'Auto-format the given Markdown files',
   builder: function (yargs) {
     yargs.positional('files', {
