@@ -44,22 +44,12 @@ Options:
                                                         [number] [default: 8888]
 ```
 
-### Table of contents
-
-Use `<!-- toc -->` and `<!-- tocstop -->` to [demarcate where a table of contents should be rendered in the Markdown file](https://github.com/jonschlinkert/markdown-toc#tocinsert). (This table of contents will be updated automatically whenever we change the file.)
+Use `<!-- toc -->` and `<!-- tocstop -->` to [demarcate where the table of contents should be rendered in your Markdown file](https://github.com/jonschlinkert/markdown-toc#tocinsert).
 
 To “commit” the table of contents to your Markdown file, do:
 
 ```sh
 $ rdd toc
-```
-
-### Auto-formatting
-
-To auto-format your Markdown file, do:
-
-```sh
-$ rdd format
 ```
 
 ## Installation
