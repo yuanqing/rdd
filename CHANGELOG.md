@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.0
+
+- Split to commands `format`, `serve`, `toc`
+- Add a `--dark` flag to support dark mode
+
 ## 2.0.0
 
 - Modernise syntax
