@@ -72,7 +72,11 @@ async function serve (file, { port, shouldFormat, theme }) {
       express.static(path.resolve(__dirname, '..', '..', 'build'))
     )
 
-    app.use(sirv(directory))
+    app.use(
+      sirv(directory, {
+        dev: true
+      })
+    )
 
     app.listen(serverPort, function () {
       const url = `0.0.0.0:${serverPort}/${file}`
