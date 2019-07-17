@@ -6,15 +6,14 @@ const markdownItHighlightJs = require('markdown-it-highlightjs')
 
 const insertMarkdownToc = require('./insert-markdown-toc')
 
-const m = new MarkdownIt({
-  html: true,
-  linkify: true
-})
-  .use(markdownItEmoji)
-  .use(markdownItGithubHeadings)
-  .use(markdownItHighlightJs, { auto: false })
-
 async function renderMarkdownFile (file) {
+  const m = new MarkdownIt({
+    html: true,
+    linkify: true
+  })
+    .use(markdownItEmoji)
+    .use(markdownItGithubHeadings)
+    .use(markdownItHighlightJs, { auto: false })
   const markdown = await fs.readFile(file, 'utf8')
   return m.render(insertMarkdownToc(markdown))
 }
