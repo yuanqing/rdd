@@ -6,7 +6,7 @@ const markdownFilesGlob = markdownExtensions.map(function (extension) {
 })
 
 async function createFileWatcher (directory, onChangeCallback) {
-  return new Promise(async function (resolve) {
+  return new Promise(function (resolve) {
     const watcher = chokidar.watch(markdownFilesGlob, {
       cwd: directory,
       ignored: '**/node_modules/**'

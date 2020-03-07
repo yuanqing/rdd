@@ -1,7 +1,7 @@
 const WebSocket = require('ws')
 
 async function createWebSocketServer (port) {
-  return new Promise(async function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     const webSocketServer = new WebSocket.Server({ port })
 
     const clients = []

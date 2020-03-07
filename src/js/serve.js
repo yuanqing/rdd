@@ -29,55 +29,44 @@ async function serve (file, { port, shouldFormat, theme }) {
   const serverPort = await getPort({ port })
   const webSocketPort = await getPort({ port: port + 1 })
 
-  return new Promise(async function (resolve, reject) {
-    const broadcastChangedMarkdownToClients = await createWebSocketServer(
-      webSocketPort
-    )
-    await createFileWatcher(directory, async function (changedFile) {
-      const filePath = path.join(directory, changedFile)
-      if (shouldFormat && (await formatMarkdownFile(filePath))) {
-        return
-      }
-      try {
-        const html = await renderMarkdownFile(filePath)
-        broadcastChangedMarkdownToClients(changedFile, html)
-      } catch (error) {
-        reject(error)
-      }
-    })
+  const broadcastChangedMarkdownToClients = await createWebSocketServer(
+    webSocketPort
+  )
+  await createFileWatcher(directory, async function (changedFile) {
+    const filePath = path.join(directory, changedFile)
+    if (shouldFormat && (await formatMarkdownFile(filePath))) {
+      return
+    }
+    const html = await renderMarkdownFile(filePath)
+    broadcastChangedMarkdownToClients(changedFile, html)
+  })
 
-    const app = express()
+  const app = express()
 
-    app.get(markdownRoutesRegularExpression, async function (req, res, next) {
-      try {
-        const html = await renderMarkdownFile(
-          path.join(directory, req.originalUrl)
-        )
-        res.send(
-          render({
-            content: html,
-            theme,
-            title: path.basename(req.path),
-            webSocketPort: webSocketPort
-          })
-        )
-      } catch (error) {
-        reject(error)
-        next()
-      }
-    })
-
-    app.use(
-      '/__rdd',
-      express.static(path.resolve(__dirname, '..', '..', 'build'))
-    )
-
-    app.use(
-      sirv(directory, {
-        dev: true
+  app.get(markdownRoutesRegularExpression, async function (req, res, next) {
+    const html = await renderMarkdownFile(path.join(directory, req.originalUrl))
+    res.send(
+      render({
+        content: html,
+        theme,
+        title: path.basename(req.path),
+        webSocketPort: webSocketPort
       })
     )
+  })
 
+  app.use(
+    '/__rdd',
+    express.static(path.resolve(__dirname, '..', '..', 'build'))
+  )
+
+  app.use(
+    sirv(directory, {
+      dev: true
+    })
+  )
+
+  return new Promise(function (resolve) {
     app.listen(serverPort, function () {
       const url = `0.0.0.0:${serverPort}/${file}`
       console.log(`Serving on ${url}`)
