@@ -44,7 +44,8 @@ async function serve (file, { port, shouldFormat, theme }) {
   const app = express()
 
   app.get(markdownRoutesRegularExpression, async function (req, res, next) {
-    const html = await renderMarkdownFile(path.join(directory, req.originalUrl))
+    const filePath = path.join(directory, req.originalUrl).replace('%20', ' ')
+    const html = await renderMarkdownFile(filePath)
     res.send(
       render({
         content: html,
