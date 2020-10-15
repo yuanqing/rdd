@@ -70,4 +70,4 @@ $ npm install --global rdd
 
 ## License
 
-[MIT](LICENSE.md)
+[MIT](/LICENSE.md)
