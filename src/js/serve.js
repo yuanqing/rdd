@@ -43,7 +43,22 @@ async function serve (file, { port, shouldFormat, theme }) {
 
   const app = express()
 
-  app.get(markdownRoutesRegularExpression, async function (req, res, next) {
+  app.get('*', async function (req, res, next) {
+    const extension = path.extname(req.originalUrl)
+    if (extension !== '') {
+      next()
+      return
+    }
+    const url = path.join(req.originalUrl, 'README.md').replace('%20', ' ')
+    const filePath = path.join(directory, url)
+    if ((await fs.pathExists(filePath)) === false) {
+      next()
+      return
+    }
+    res.redirect(url)
+  })
+
+  app.get(markdownRoutesRegularExpression, async function (req, res) {
     const filePath = path.join(directory, req.originalUrl).replace('%20', ' ')
     const html = await renderMarkdownFile(filePath)
     res.send(
