@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.2.0
+
+- Automatically redirect `/` to `/README.md` if `./README.md` exists
+
+## 3.1.0
+
+- Allow spaces in the file name
+
 ## 3.0.0
 
 - Split to commands `format`, `serve`, `toc`
