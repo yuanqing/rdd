@@ -11,12 +11,12 @@
 ```
 $ ls
 README.md
-$ npm i -g rdd
-$ rdd -o -d
+$ npm install --global rdd
+$ rdd --open
 Serving on 0.0.0.0:8888/README.md
 ```
 
-Here we’re using the `-o` flag to open the rendered Markdown file in our default web browser, and the `-d` flag to enable dark mode. The rendered page will be updated automatically whenever we edit and save `README.md`.
+Here we’re using the `--open` flag to open the rendered Markdown file in our default web browser. The rendered page will be updated automatically whenever we edit and save `README.md`.
 
 ## Usage
 
