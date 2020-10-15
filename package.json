@@ -69,7 +69,7 @@
     "lint": "standard 'src/js/**/*.js'",
     "prepublishOnly": "yarn run build",
     "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
-    "start": "yarn run build && src/js/cli.js --open"
+    "start": "yarn run build && node src/js/cli.js --open"
   },
   "husky": {
     "hooks": {
