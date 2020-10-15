@@ -2,12 +2,22 @@
   "name": "rdd",
   "version": "3.1.0",
   "description": "Preview your Markdown locally as it would appear on GitHub, with live updating",
-  "author": "Lim Yuan Qing",
+  "keywords": [
+    "markdown",
+    "md",
+    "rdd",
+    "readme"
+  ],
+  "author": "Yuan Qing Lim",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/yuanqing/rdd.git"
   },
+  "files": [
+    "build",
+    "src"
+  ],
   "bin": {
     "rdd": "src/js/cli.js"
   },
@@ -68,16 +78,5 @@
       "standard",
       "prettier-standard"
     ]
-  },
-  "files": [
-    "build",
-    "src"
-  ],
-  "keywords": [
-    "markdown",
-    "md",
-    "rdd",
-    "readme"
-  ],
-  "preferGlobal": true
+  }
 }
