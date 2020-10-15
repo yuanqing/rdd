@@ -1,4 +1,4 @@
-# rdd [![npm Version](https://badgen.net/npm/v/rdd)](https://www.npmjs.org/package/rdd) [![Build Status](https://badgen.net/travis/yuanqing/rdd?label=build)](https://travis-ci.org/yuanqing/rdd)
+# rdd [![npm Version](https://img.shields.io/npm/v/rdd?cacheSeconds=1800)](https://www.npmjs.org/package/rdd) [![build](https://github.com/yuanqing/rdd/workflows/build/badge.svg)](https://github.com/yuanqing/rdd/actions?query=workflow%3Abuild)
 
 > Preview your Markdown locally as it would appear on GitHub, with live updating
 
@@ -6,9 +6,9 @@
 
 ## Quick start
 
-_Requires [Node.js](https://nodejs.org/)._
+*Requires [Node.js](https://nodejs.org/).*
 
-```sh
+```
 $ ls
 README.md
 $ npm i -g rdd
@@ -20,6 +20,7 @@ Here we’re using the `-o` flag to open the rendered Markdown file in our defau
 
 ## Usage
 
+<!-- ``` markdown-interpolate: node src/js/cli.js --help -->
 ```
 rdd [file]
 
@@ -34,27 +35,28 @@ Positionals:
   file                                                                  [string]
 
 Options:
-  --help        Show help                                              [boolean]
-  --version     Show version number                                    [boolean]
-  --dark, -d    Enable dark mode                      [boolean] [default: false]
-  --format, -f  Auto-format the Markdown file on save [boolean] [default: false]
-  --open, -o    Open the rendered file in your default web browser
+      --help     Show help                                             [boolean]
+      --version  Show version number                                   [boolean]
+  -d, --dark     Enable dark mode                     [boolean] [default: false]
+  -f, --format   Auto-format the Markdown file on save[boolean] [default: false]
+  -o, --open     Open the rendered file in your default web browser
                                                       [boolean] [default: false]
-  --port, -p    Set the preferred port to serve the rendered file
+  -p, --port     Set the preferred port to serve the rendered file
                                                         [number] [default: 8888]
 ```
+<!-- ``` end -->
 
 Use `<!-- toc -->` and `<!-- tocstop -->` to [demarcate where the table of contents should be rendered in your Markdown file](https://github.com/jonschlinkert/markdown-toc#tocinsert).
 
 To “commit” the table of contents to the file, do:
 
-```sh
+```
 $ rdd toc
 ```
 
 ## Installation
 
-```sh
+```
 $ npm install --global rdd
 ```
 
