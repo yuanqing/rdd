@@ -72,7 +72,7 @@ async function serve (file, { port, shouldFormat, theme }) {
   })
 
   app.use(
-    '/__rdd',
+    '/__rdd__',
     express.static(path.resolve(__dirname, '..', '..', 'build'))
   )
 
