@@ -57,16 +57,17 @@
     "terser": "^5.3.5"
   },
   "scripts": {
-    "build": "yarn clean && yarn build-css && yarn build-js",
-    "build-css": "yarn build-css-light && yarn build-css-dark",
+    "build": "yarn run clean && yarn run build-css && yarn run build-js",
+    "build-css": "yarn run build-css-light && yarn run build-css-dark",
     "build-css-light": "mkdirp build/css && cat src/css/style.css node_modules/highlight.js/styles/default.css node_modules/highlight.js/styles/github.css node_modules/github-markdown-css/github-markdown.css | csso --output build/css/light.css",
     "build-css-dark": "postcss build/css/light.css --use postcss-color-invert --output build/css/dark.css",
     "build-js": "mkdirp build/js && browserify src/js/client.js | terser --compress --mangle --output build/js/script.js",
     "clean": "rimraf '*.log' build",
     "fix": "prettier-standard 'src/js/**/*.js'",
     "lint": "standard 'src/js/**/*.js'",
-    "prepublishOnly": "yarn build",
-    "start": "yarn build && src/js/cli.js --open"
+    "prepublishOnly": "yarn run build",
+    "reset": "yarn run clean && rimraf node_modules yarn.lock && yarn install",
+    "start": "yarn run build && src/js/cli.js --open"
   },
   "husky": {
     "hooks": {
