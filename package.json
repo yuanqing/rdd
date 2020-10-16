@@ -48,7 +48,7 @@
     "csso-cli": "^3.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
-    "markdown-interpolate": "^0.0.6",
+    "markdown-interpolate": "^0.0.7",
     "mkdirp": "^1.0.4",
     "postcss-cli": "^8.1.0",
     "postcss-color-invert": "^0.0.1",
