@@ -11,8 +11,7 @@
 ```
 $ ls
 README.md
-$ npm install --global rdd
-$ rdd --open
+$ npx rdd --open
 Serving on 0.0.0.0:8888/README.md
 ```
 
@@ -51,7 +50,7 @@ Use `<!-- toc -->` and `<!-- tocstop -->` to [demarcate where the table of conte
 To “commit” the table of contents to the file, do:
 
 ```
-$ rdd toc
+$ npx rdd toc
 ```
 
 ## Installation
