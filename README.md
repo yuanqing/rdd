@@ -1,4 +1,4 @@
-# rdd [![npm Version](https://img.shields.io/npm/v/rdd?cacheSeconds=1800)](https://www.npmjs.org/package/rdd) [![build](https://github.com/yuanqing/rdd/workflows/build/badge.svg)](https://github.com/yuanqing/rdd/actions?query=workflow%3Abuild)
+# rddx [![npm Version](https://img.shields.io/npm/v/rdd?cacheSeconds=1800)](https://www.npmjs.org/package/rdd) [![build](https://github.com/yuanqing/rdd/workflows/build/badge.svg)](https://github.com/yuanqing/rdd/actions?query=workflow%3Abuild)
 
 > Preview your Markdown locally as it would appear on GitHub, with live updating
 
@@ -12,7 +12,7 @@
 $ ls
 README.md
 $ npx rdd --open
-Serving on 0.0.0.0:8888/README.md
+Serving on 127.0.0.1:8888/README.md
 ```
 
 Here we’re using the `--open` flag to open the rendered Markdown file in our default web browser. The rendered page will be updated automatically whenever we edit and save `README.md`.
