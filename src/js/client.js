@@ -2,7 +2,7 @@ const markyDeepLinks = require('marky-deep-links')
 markyDeepLinks()
 
 const webSocket = new window.WebSocket(
-  `ws://0.0.0.0:${window.__rddWebSocketPort}/`
+  `ws://127.0.0.1:${window.__rddWebSocketPort}/`
 )
 
 const path = window.location.pathname.substring(1)

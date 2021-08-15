@@ -84,7 +84,7 @@ async function serve (file, { port, shouldFormat, theme }) {
 
   return new Promise(function (resolve) {
     app.listen(serverPort, function () {
-      const url = `0.0.0.0:${serverPort}/${file}`
+      const url = `127.0.0.1:${serverPort}/${file}`
       console.log(`Serving on ${url}`)
       resolve(`http://${url}`)
     })
